@@ -1,0 +1,65 @@
+# Compiled source #
+###################
+*.pyc
+*.*~
+*.log
+*.pot
+*.orig
+local_settings.py
+
+# Packages
+*.egg
+*,egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit Test /coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Vim Temporary Files
+*.swp
+
+#Django media files
+*/media/*
+
+#Sphinx builds
+doc/*/build/*
+
+#Rope Project
+.ropeproject
+
+# IDE settings
+.pydevproject
+.project
+.settings
+.idea
+
+# PATCHS
+*.patch
+
+# Node logs
+*/node_server/console_log*
+*/node_server/error_log*
+*/node_modules/
+
+# Celery Files
+celeryev.pid
+.bundle/

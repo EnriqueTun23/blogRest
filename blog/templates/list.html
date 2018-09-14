@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% block style %}
+      <style>
+        .letra
+        {
+          font-size: 25px;
+          margin: 10px;
+        }
+      </style>
+{% endblock  %}
+{% load static %}
+    {% block content %}
+    <div class="container">
+        <h1 class="teal-text text-accent-2">Publicaciones "El diario"</h1>
+        <div class="row">
+            <div class="col s9 white">
+              <form method="GET" action="">
+                <input type="text" name="q" placeholder="Buscar post...." value="{{request.GET.q}}">
+                <input type="submit" value="Buscar">
+              </form>
+            </div>
+          </div> 
+        {% for obj in query %}
+
+        <div class="row">
+                <div class="col s6">
+                  <div class="card">
+                    {% if obj.image %}
+                    <div class="card-image">
+                        <img src="{{obj.image.url}}" %}">
+                        <span class="card-title black yellow-text text-accent-2">{{obj.title}}</span>
+                      </div>
+                    {% else%}
+                    <div class="card-image">
+                        <img src="{% static "img/images.jpg" %}">
+                        <span class="card-title black yellow-text text-accent-2">{{obj.title}}</span>
+                      </div>
+                    {% endif %}
+                    <div class="card-content">
+                      <span>{{obj.publish}}</span><br>
+                      <p>{{obj.content}}</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="{% url 'update' obj.id %}">Editar</a>
+                      <a href="{% url 'detail' obj.id %}">Ver</a>
+                    </div>
+                  </div>
+                </div>
+                {%endfor%}
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if query.has_previous %}
+                            <a class="white letra" href="?page=1"><-- Principio</a>
+                            <a class="white letra" href="?page={{ query.previous_page_number }}">Anterior</a>
+                        {% endif %}
+                
+                        <span class="current white letra">
+                            Page {{ query.number }} of {{ query.paginator.num_pages }}.
+                        </span>
+                
+                        {% if query.has_next %}
+                            <a class="white letra" href="?page={{ query.next_page_number }}">Siguiente</a>
+                            <a class="white letra" href="?page={{ query.paginator.num_pages }}">Final --></a>
+                        {% endif %}
+                    </span>
+                </div>
+        </div> 
+        
+    </div>
+        
+    {% endblock %}

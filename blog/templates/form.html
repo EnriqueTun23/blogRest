@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <form  class="col s12 indigo lighten-5" method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+            <!-- {{form.as_p}} -->
+            {{form|crispy}}
+            <br>
+            <input type="submit" value="{{btn}}" name="">
+    </form>
+</div>
+{% endblock %}
+    <!-- {{form}}  -->
+  
+<!-- <label for="titulo">Titulo: </label>
+<input id="titulo" type="text" name="titulo" maxlength="100" required>
+<br>
+<label for="">Info: </label>
+<textarea></textarea> -->
