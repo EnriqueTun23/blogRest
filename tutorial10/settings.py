@@ -25,8 +25,26 @@ SECRET_KEY = '9p=!sx$i#lwucv&dmy7-%a6%+6%rdkpv@4ch3&q9#1-r__isgm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+#Se agrega para poder ponerlo como autentificacion 
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.TokenAuthentication',
+    # ),
+    # 'DEFAULT_PERMISSIONS_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+}
+# CORS_ORIGIN_WHITELIST = (
+#  'localhost:8080',
+# )
 
 # Application definition
 
@@ -40,6 +58,7 @@ INSTALLED_APPS = [
     #apps terceros
     'crispy_forms',
     'rest_framework',
+    'corsheaders',
     #apps
     'blog',
 ]
@@ -47,6 +66,10 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    # se agrego
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # -----------------
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +80,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'tutorial10.urls'
-
+CORS_ORIGIN_ALLOW_ALL=True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

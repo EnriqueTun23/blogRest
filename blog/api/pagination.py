@@ -8,4 +8,4 @@ class PostLimitOffsetPagination(LimitOffsetPagination):
     max_limit = 8
 
 class PostPageNumberPagination(PageNumberPagination):
-    page_size = 5
+    page_size = 3

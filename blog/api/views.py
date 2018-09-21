@@ -23,6 +23,7 @@ class PostCreateAPIView(CreateAPIView):
 class PostListAPIView(ListAPIView):
     queryset = post.objects.all()
     serializer_class = PostListSerializer
+    permissions_classes = (AllowAny)
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['title']
     pagination_class = PostPageNumberPagination
